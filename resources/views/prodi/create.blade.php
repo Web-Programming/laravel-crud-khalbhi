@@ -8,6 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Form Prodi</h1>
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col">
+                <h2>Form Prodi</h2>
+                <form action="{{ url('prodi/store') }}" method="post">
+                    @csrf   
+                    <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" name="nama" id="nama" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
