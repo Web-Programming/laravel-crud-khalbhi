@@ -3,4 +3,18 @@
 
 - Join ke Classrom melalui invitation link yang telah diberikan
 - Ubah konfigurasi APP_NAME menjadi "Laravel MI4A <Nama> <NPM>"
+
+
+## Command
+- composer install (optional)
+- composer require laravel/breeze --dev
+- php artisan breeze:install
+
+## Pastikan telah menginstall aplikasi nodejs
+- npm install
+- npm run dev
+
+## Syarat Tambahan
 - Pastikan konfigurasi DB_DATABASE adalah "laravel"
+- Jalankan perintah php artisan migrate
+- Jika migration error, hapus (drop) seluruh tabel yang ada di database laravel, lalu jalankan lagi perintah php artisan migrate

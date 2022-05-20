@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 Route::get("/dosen", function(){
     $kampus = "Universitas Multi Data Palembang";
     return view("dosen.index", compact('kampus'));
