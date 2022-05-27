@@ -8,7 +8,9 @@
         <div class="col">            
             <h1>Program Studi</h1>
             <div class="d-md-flex justify-content-md-end">
+                @can("create",  App\Models\Prodi::class)
                 <a href="{{ route('prodi.create') }}" class="btn btn-primary">Tambah</a>
+                @endcan
             </div>
             @if (session()->has('info'))
                 <div class="alert alert-success">
@@ -34,10 +36,16 @@
                             <td>
                                 <form action="{{ route('prodi.destroy', ['prodi' => $item->id]) }}" method="POST">
                                     <a href="{{ url('/prodi/'.$item->id) }}" class="btn btn-warning">Detail</a>
+                                    @can("update", $item)
                                     <a href="{{ url('/prodi/'.$item->id.'/edit') }}" class="btn btn-info">Ubah</a>
+                                    @endcan
+
                                     @method('DELETE')
                                     @csrf
+
+                                    @can("delete", $item)
                                     <button type="submit" class="btn btn-danger">Hapus</button>
+                                    @endcan
                                 </form>
                             </td>
                         </tr>

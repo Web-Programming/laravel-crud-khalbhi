@@ -13,7 +13,8 @@ class ProdiController extends Controller
     }
 
     function index(){
-    
+        $this->authorize('viewAny', Prodi::class);
+
         $kampus = "Universitas Multi Data Palembang";
         $prodi = Prodi::all();
         return view('prodi.index')->with('prodi', $prodi);
@@ -24,11 +25,13 @@ class ProdiController extends Controller
     }
 
     function create(){
+        $this->authorize('create', Prodi::class);
         return view("prodi.create");
     }
 
     public function store(Request $request)
     {
+        $this->authorize('create', Prodi::class);
         $validateData = $request->validate([
             'nama' => 'required|min:5|max:20',
             'foto' => 'required|file|image|max:1000'
@@ -59,12 +62,14 @@ class ProdiController extends Controller
 
     public function edit(Prodi $prodi)
     {
+        $this->authorize("update", $prodi);
         return view('prodi.edit', ['prodi' => $prodi]);
     }
 
     public function update(Request $request, Prodi $prodi)
     {
      
+        $this->authorize("update", $prodi);
         $validateData = $request->validate([
             'nama' => 'required|min:5|max:20',
         ]);
@@ -76,6 +81,7 @@ class ProdiController extends Controller
 
     public function destroy(Prodi $prodi)
     {
+        $this->authorize("delete", $prodi);
         $prodi->delete();
         return redirect()->route('prodi.index')->with("info", "Prodi $prodi->nama berhasil dihapus.");
     }
